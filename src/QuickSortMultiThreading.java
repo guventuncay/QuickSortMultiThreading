@@ -102,10 +102,10 @@ public class QuickSortMultiThreading extends RecursiveAction { // unlike Recursi
         // Fork-join ThreadPool to keep thread creation as per resources
         // According to Oracle’s documentation, using the predefined common pool reduces resource consumption,
         // since this discourages the creation of a separate thread pool per task.
-        ForkJoinPool pool = ForkJoinPool.commonPool();
+//        ForkJoinPool pool = ForkJoinPool.commonPool();
 
         // ForkJoinPool with the indicated parallelism level (how many worker threads to use)
-//        ForkJoinPool pool = new ForkJoinPool(2);
+        ForkJoinPool pool = new ForkJoinPool(80);
 
         long startTime = System.currentTimeMillis();
 
