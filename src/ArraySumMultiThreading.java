@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
@@ -16,7 +17,7 @@ public class ArraySumMultiThreading extends RecursiveTask<Integer> {
     protected Integer compute() {
 
         if (end - start <= 1) {
-            return arr[start] + arr[end];
+            return Arrays.stream(arr, start, end).sum();
         }
 
         int mid = (start + end) / 2;
@@ -34,7 +35,7 @@ public class ArraySumMultiThreading extends RecursiveTask<Integer> {
 
         ForkJoinPool pool = ForkJoinPool.commonPool();
 
-        System.out.println(pool.invoke(new ArraySumMultiThreading(0, arr.length - 1, arr)));
+        System.out.println(pool.invoke(new ArraySumMultiThreading(0, arr.length, arr)));
 
     }
 }
